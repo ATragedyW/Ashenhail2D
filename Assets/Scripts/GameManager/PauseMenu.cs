@@ -1,48 +1,81 @@
 using UnityEngine;
-using TMPro;
-using PlayerStats;
+using UnityEngine.UI;
+using TMPro; 
 
-public class StatsMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public GameObject statsUI;
-
-    public TMP_Text nameText;
-    public TMP_Text levelText;
-    public TMP_Text xpText;
-    public TMP_Text healthText;
-    public TMP_Text manaText;
-
-    PlayerStats.PlayerStats stats;
-
-    private void Start()
+    public GameObject pauseMenuUI;
+    
+   
+    public TMP_Text playerNameText;
+    public TMP_Text playerLevelText;
+    public TMP_Text playerHealthText;
+    public TMP_Text playerManaText;
+    
+    private PlayerController player;
+    
+    void Start()
     {
-        statsUI.SetActive(false);
-        stats = FindFirstObjectByType<PlayerStats.PlayerStats>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))  // or Tab
+        pauseMenuUI.SetActive(false);
+        player = FindFirstObjectByType<PlayerController>(); 
+        
+        if (player == null)
         {
-            ToggleStats();
+            Debug.LogWarning("PauseMenu: PlayerController not found!");
         }
     }
-
-    public void ToggleStats()
+    
+    void Update()
     {
-        bool show = !statsUI.activeSelf;
-        statsUI.SetActive(show);
-
-        if (show)
-            UpdateStatsUI();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
-
-    void UpdateStatsUI()
+    
+    public void TogglePause()
     {
-        nameText.text = $"Name: {stats.PlayerName}";
-        levelText.text = $"Level: {stats.PlayerLevel}";
-        xpText.text = $"XP: {stats.PlayerXP}";
-        healthText.text = $"Health: {stats.currentHealth}/{stats.maxHealth}";
-        manaText.text = $"Mana: {stats.currentMana}/{stats.maxMana}";
+        bool isPaused = !pauseMenuUI.activeSelf;
+        pauseMenuUI.SetActive(isPaused);
+        
+        Time.timeScale = isPaused ? 0f : 1f;
+        
+        if (isPaused && player != null)
+        {
+            UpdatePauseMenuUI(); 
+        }
+    }
+    
+    void UpdatePauseMenuUI()
+    {
+        if (player == null) return;
+        
+        
+        if (playerNameText != null)
+            playerNameText.text = $"Name: {player.playerName}";
+            
+        if (playerLevelText != null)
+            playerLevelText.text = $"Level: {player.playerLevel}";
+            
+        if (playerHealthText != null)
+            playerHealthText.text = $"Health: {player.currentHealth}/{player.maxHealth}";
+            
+        if (playerManaText != null)
+            playerManaText.text = $"Mana: {player.currentMana}/{player.maxMana}";
+    }
+    
+    
+    public void ResumeGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }

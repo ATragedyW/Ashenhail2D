@@ -105,8 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1accbf18d9d7f5b4da20f1b8b5a6b59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectile
-  damage: 10
+  damage: 15
   lifetime: 3
+  hitEffect: {fileID: 0}
 --- !u!58 &5867134706531117415
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -14,21 +14,21 @@ public class ClassSelectionMenu : MonoBehaviour
 
     private void Start()
     {
-        // Make sure GameManager exists in this scene
+        
         EnsureGameManagerExists();
 
         iceButton.onClick.AddListener(() => SelectClass(iceClass));
         fireButton.onClick.AddListener(() => SelectClass(fireClass));
         necroButton.onClick.AddListener(() => SelectClass(necroClass));
 
-        Debug.Log("ClassSelectionMenu: Ready for class selection");
+        
     }
 
     void EnsureGameManagerExists()
     {
         if (GameManager.Instance == null)
         {
-            Debug.Log("ClassSelectionMenu: Creating GameManager");
+           
             GameObject gmObject = new GameObject("GameManager");
             gmObject.AddComponent<GameManager>();
         }
@@ -42,12 +42,12 @@ public class ClassSelectionMenu : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Selecting class: {chosen.className}");
+        
         
         if (GameManager.Instance != null)
         {
             GameManager.Instance.SetClass(chosen);
-            // Load game scene after selection
+            
             GameManager.Instance.StartGame();
         }
         else

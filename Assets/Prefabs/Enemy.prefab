@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3317435686960037084}
   - component: {fileID: 101538151804013037}
   - component: {fileID: 5332570931131409375}
+  - component: {fileID: 6872132107819304595}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -145,9 +146,17 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   xpReward: 100
+  canRespawn: 1
+  respawnTime: 10
   spriteRenderer: {fileID: 0}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+  manaPotionItem: {fileID: 11400000, guid: 71ca0a8fff591814faa267cf056ef752, type: 2}
+  manaPotionWorldPrefab: {fileID: 7131511500356293504, guid: 304337d04640d9b44bd0859d9866ef89, type: 3}
+  dropDirectlyToInventory: 1
+  dropChance: 1
+  minDrops: 1
+  maxDrops: 3
 --- !u!50 &101538151804013037
 Rigidbody2D:
   serializedVersion: 5
@@ -192,3 +201,22 @@ MonoBehaviour:
   projectileSpeed: 3
   attackRange: 10
   firePoint: {fileID: 0}
+--- !u!114 &6872132107819304595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038474348279772176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ce4eb8d62ed794caedecf705230f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
+  chaseRange: 9
+  moveSpeed: 3
+  stoppingDistance: 1
+  leashRange: 15
+  agroBuffer: 2
+  stateChangeDelay: 0.3
+  damping: 2

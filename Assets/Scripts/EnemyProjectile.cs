@@ -6,6 +6,9 @@ public class EnemyProjectile : MonoBehaviour
     public float damage = 10f;
     public float lifetime = 4f;
     
+    [Header("Visual Effects")]
+    public GameObject hitEffect;
+    
     private Vector2 direction;
     private float speed;
 
@@ -25,27 +28,48 @@ public class EnemyProjectile : MonoBehaviour
 
     void Update()
     {
-        // Move the projectile
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
         
-        // Debug movement every 30 frames to avoid spam
-        if (Time.frameCount % 30 == 0)
-        {
-            Debug.Log($"Projectile MOVING: Position={transform.position}, Direction={direction}");
-        }
+        transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Debug.Log($"Projectile hit: {collision.gameObject.name} (Tag: {collision.tag})");
 
         if (collision.CompareTag("Player"))
         {
-            // Damage player
+        
+            PlayerController player = collision.GetComponent<PlayerController>();
+            if (player == null)
+            {
+               
+                player = collision.GetComponentInParent<PlayerController>();
+            }
+            
+            if (player != null)
+            {
+                Debug.Log($"Dealing {damage} damage to player!");
+                player.TakeDamage((int)damage); 
+                
+               
+                if (hitEffect != null)
+                    Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError("Player hit but PlayerController not found!");
+            }
+            
             Destroy(gameObject);
         }
-        else if (!collision.CompareTag("Enemy")) // Destroy on walls, etc.
+        else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Projectile")) 
         {
+           
+            Debug.Log($"Hit non-enemy object: {collision.gameObject.name}");
+            
+            if (hitEffect != null)
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+                
             Destroy(gameObject);
         }
     }

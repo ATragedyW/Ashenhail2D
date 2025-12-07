@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905bab8844184e0448ce9f82bae16bdd, type: 3}
+  m_Name: FireClass
+  m_EditorClassIdentifier: Assembly-CSharp::FireClass
+  className: Fire Mage
+  classColor: {r: 1, g: 1, b: 1, a: 1}
+  baseHealth: 100
+  baseMana: 50
+  baseAttack: 150
+  healthPerLevel: 10
+  manaPerLevel: 5
+  attackPerLevel: 2
+  primaryManaCost: 10
+  secondaryManaCost: 25
+  ultimateManaCost: 50
+  primaryCooldown: 2
+  secondaryCooldown: 3
+  ultimateCooldown: 10
+  primaryAbilityName: FireBolt
+  secondaryAbilityName: Secondary Ability
+  ultimateAbilityName: Ultimate Ability
+  primaryAbilityPrefab: {fileID: 7367424497986751234, guid: f177ad9a3209cc44382e409872c39c87, type: 3}
+  secondaryAbilityPrefab: {fileID: 0}
+  ultimateAbilityPrefab: {fileID: 0}
+  healthBarColor: {r: 0, g: 1, b: 0, a: 1}
+  manaBarColor: {r: 0, g: 0, b: 1, a: 1}
+  classIcon: {fileID: 21300000, guid: fc96cea3de102ef419d554cb9565d5df, type: 3}
+  healthGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  healthRegenRate: 0
+  manaRegenRate: 1
+  defenseMultiplier: 1
+  fireBoltPrefab: {fileID: 0}
+  fireBoltSpeed: 12
+  burnDamage: 5
+  burnDuration: 3
+  fireWallDuration: 5
+  meteorDamage: 50

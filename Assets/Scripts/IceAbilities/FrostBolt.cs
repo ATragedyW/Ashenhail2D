@@ -7,19 +7,31 @@ public class FrostBolt : MonoBehaviour
     public float damage = 25f;
     public float lifetime = 3f;
     
+    [Header("Visual Settings")]
+    public float scale = 0.5f;
+    public SpriteRenderer spriteRenderer; 
+    
     private Vector2 direction;
 
     void Start()
     {
+        
+        transform.localScale = new Vector3(scale, scale, 1f);
+        
+        
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        
         Destroy(gameObject, lifetime);
     }
 
-    // ADD THIS METHOD - Your IceClass is calling it!
     public void SetDirection(Vector2 newDirection)
     {
         direction = newDirection.normalized;
         
-        // Rotate to face direction
+        
+        transform.rotation = Quaternion.identity;
+        
         if (direction != Vector2.zero)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -29,7 +41,7 @@ public class FrostBolt : MonoBehaviour
 
     void Update()
     {
-        // Simple movement
+        
         if (direction != Vector2.zero)
         {
             transform.position += (Vector3)(direction * speed * Time.deltaTime);
@@ -40,7 +52,6 @@ public class FrostBolt : MonoBehaviour
     {
         if (collision.CompareTag("Player")) return;
         
-        // Check if we hit an enemy
         EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {

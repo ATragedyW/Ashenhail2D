@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: GeneralStore
+  m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
+  shopName: General Store
+  shopkeeperIcon: {fileID: -524142055, guid: 9ad27d7bec1813143a5768f499ba3997, type: 3}
+  itemsForSale:
+  - item: {fileID: 11400000, guid: 1cfb38f6224ba034cb6c69ae7b6a918c, type: 2}
+    price: 15
+    sellPrice: 5
+    stock: 5
+  - item: {fileID: 11400000, guid: 0de2fe5ac6d627c4c9ab3157e405c964, type: 2}
+    price: 15
+    sellPrice: 5
+    stock: 5

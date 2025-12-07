@@ -19,20 +19,19 @@ public class IceClass : PlayerClass
             return;
         }
 
-        // Get player position
+        
         Vector2 playerPosition = player.transform.position;
         
-        // Calculate direction towards mouse
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0;
         Vector2 direction = (mouseWorld - (Vector3)playerPosition).normalized;
         
         Debug.Log($"Spawning FrostBolt at {playerPosition} towards {direction}");
         
-        // Spawn frostbolt
+       
         GameObject bolt = Instantiate(frostBoltPrefab, playerPosition, Quaternion.identity);
         
-        // Get FrostBolt component
+       
         FrostBolt frostBolt = bolt.GetComponent<FrostBolt>();
         if (frostBolt == null)
         {
@@ -40,18 +39,9 @@ public class IceClass : PlayerClass
             return;
         }
         
-        // Set direction
+       
         frostBolt.SetDirection(direction);
         Debug.Log("Frost Bolt launched successfully!");
     }
 
-    public override void SecondaryAbility(GameObject player)
-    {
-        Debug.Log("Frost Nova: Freezes enemies around the player!");
-    }
-
-    public override void UltimateAbility(GameObject player)
-    {
-        Debug.Log("Blizzard: Summons a snowstorm in an area!");
-    }
 }

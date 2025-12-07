@@ -81,18 +81,7 @@ public class NecromancyClass : PlayerClass
         Debug.Log("Shadow Bolt cast successfully!");
     }
 
-    public override void SecondaryAbility(GameObject player)
-    {
-        Debug.Log("Raise Skeleton: Summons a skeleton minion!");
-        // Implementation for skeleton summoning
-    }
-
-    public override void UltimateAbility(GameObject player)
-    {
-        Debug.Log("Army of the Dead: Summons multiple undead to fight!");
-        // Implementation for army summoning
-    }
-    
+   
     private Vector2 GetSpawnOffset(GameObject player)
     {
         // Calculate offset based on mouse direction

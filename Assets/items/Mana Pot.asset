@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94d3d0a27b2dec4088466cff9c19375, type: 3}
+  m_Name: Mana Pot
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  itemName: Mana Potion
+  icon: {fileID: 21300000, guid: 84b06f699c58ce24a90a463800463103, type: 3}
+  description: A potion that refills 20 MP
+  baseValue: 10
+  isStackable: 1
+  maxStack: 1
+  isUsable: 1
+  isSellable: 1
+  canBeSoldInShop: 1

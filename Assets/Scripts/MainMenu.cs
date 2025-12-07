@@ -5,6 +5,6 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("ClassSelection");  // Change to your actual scene name
+        SceneManager.LoadScene("ClassSelection");  
     }
 }

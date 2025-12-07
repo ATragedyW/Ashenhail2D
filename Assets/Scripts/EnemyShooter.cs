@@ -20,7 +20,7 @@ public class EnemyShooter : MonoBehaviour
         // Find player
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         
-        // Get the EnemyHealth component to check if alive
+       
         enemyHealth = GetComponent<EnemyHealth>();
         
         shootTimer = shootInterval;
@@ -31,15 +31,15 @@ public class EnemyShooter : MonoBehaviour
 
     void Update()
     {
-        // Don't shoot if dead (using EnemyHealth) or no player
+       
         if (enemyHealth != null && enemyHealth.currentHealth <= 0) return;
         if (player == null) return;
         
-        // Check if player is in range
+        
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (distanceToPlayer > attackRange) return;
         
-        // Update shoot timer
+        
         shootTimer -= Time.deltaTime;
         
         if (shootTimer <= 0f)
@@ -76,7 +76,7 @@ public class EnemyShooter : MonoBehaviour
         {
             Debug.LogError("NO EnemyProjectile COMPONENT FOUND ON PREFAB!");
             
-            // List all components for debugging
+            
             Component[] allComponents = projectile.GetComponents<Component>();
             foreach (Component comp in allComponents)
             {
